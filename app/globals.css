@@ -5,12 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background-soft: #E8F1F2;
+  --background-soft: #c1ecf2;
   --surface: #FFF9F0;
-  --text-muted: #52636B;
+  --text-muted: #4A5A61;
 
-  --primary: oklch(84.352% 0.06635 217.029);
-  --primary-hover: #d6e5b7;
+  --primary: #7eb2c7;
+  --primary-hover: #e2f7b8;
 
   --accent-sky: #A7C7E7;
   --accent-coral: #E9967A;
@@ -20,13 +20,10 @@
 
   --radius: 0.625rem;
 
-  --background: oklch(1 0 0);
-
-  --foreground: oklch(0.145 0 0);
-
-  --card: oklch(1 0 0);
-
-  --card-foreground: oklch(0.145 0 0);
+  --background: #d0f9ff;       /* soft blue */
+  --foreground: #1F2D33;      /* soft dark, not pure black */
+  --card: #def1cd;             /* cream surface */
+  --card-foreground: #2F3E46;
 
   --popover: oklch(1 0 0);
 
@@ -46,7 +43,7 @@
 
   --accent-foreground: oklch(0.205 0 0);
 
-  --destructive: oklch(74.793% 0.04094 267.859);
+  --destructive: oklch(67.53% 0.2036 35.915);
 
   --border: oklch(0.922 0 0);
 
@@ -138,9 +135,9 @@
 }
 
 .dark {
-  --background: oklch(77.807% 0.03678 271.468);
+  --background: #1E2A30;
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
+  --card: #24343B;
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
