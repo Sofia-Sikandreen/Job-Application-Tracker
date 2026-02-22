@@ -1,74 +1,85 @@
-import { Briefcase } from 'lucide-react';
+"use client";
+
+import { Briefcase } from "lucide-react";
 import Link from "next/link";
-import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/auth/auth';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent,DropdownMenuLabel, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { AvatarFallback,Avatar } from './avatar';
+import { Button } from "./button";
+import { getSession, signOut } from "@/lib/auth/auth";
+import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuTrigger } from "./dropdown-menu";
+import { Avatar, AvatarFallback } from "./avatar";
+import SignOutButton from "./signoutbutn";
+import { useSession } from "@/lib/auth/auth-client";
 
-export default async function Nav(){
-    const session = await getSession();
-    return(
-        <nav className="bg-primary text-white px-6 py-4 shadow-md text-lg font-semibold gap-2">
-        <div className="flex items-center justify-between">
-            {/*Logo*/}
-        <Link href="/" className='flex items-center '>    
-            <Briefcase className="mr-4" size={28} style={{ paddingTop: '4px' }} />
-            Job Tracker
+export default function Navbar() {
+const { data: session } = useSession();
+return (
+    <nav className="border-b border-gray-200 bg-white">
+    <div className="container mx-auto flex h-16 items-center px-4 justify-between">
+        <Link
+        href="/"
+        className="flex items-center gap-2 text-xl font-semibold text-primary"
+        >
+        <Briefcase />
+        Job Tracker
         </Link>
-
-
-        <div className="flex gap-3">
-            {session?.user ? (
+        <div className="flex items-center gap-4">
+        {session?.user ? (
             <>
             <Link href="/dashboard">
-            <Button className="bg-white text-primary hover:bg-gray-100 px-5 py-2 rounded-md font-semibold">
+                <Button
+                variant="ghost"
+                className="text-gray-700 hover:text-black"
+                >
                 Dashboard
-            </Button>
+                </Button>
             </Link>
             <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                <Button variant="ghost"  className='hover:bg-gray-100 px-5 py-2 rounded-md font-semibold'>
-                    <Avatar>
-                        <AvatarFallback className='bg-white text-primary'>
-                            {session?.user.name[0].toUpperCase()}
-                        </AvatarFallback>
+                <DropdownMenuTrigger>
+                <Button
+                    variant="ghost"
+                    className="relative h-8 w-8 rounded-full"
+                >
+                    <Avatar className="h-8 w-8">
+                    <AvatarFallback className="bg-primary text-white">
+                        {session.user.name[0].toUpperCase()}
+                    </AvatarFallback>
                     </Avatar>
                 </Button>
                 </DropdownMenuTrigger>
 
-                <DropdownMenuContent>
-                    <DropdownMenuLabel>
-                        <div>
-                        <p>{session.user.name}</p>
-                        <p>{session.user.email}</p>
-                        </div>
-                    </DropdownMenuLabel>
-                    <DropdownMenuItem onClick={await signOut}>
-                    Log Out
-                    </DropdownMenuItem>
+                <DropdownMenuContent className="w-56" align="end">
+                <DropdownMenuLabel className="font-normal">
+                    <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-medium leading-none">
+                        {session.user.name}
+                    </p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                        {session.user.email}
+                    </p>
+                    </div>
+                </DropdownMenuLabel>
+                <SignOutButton />
                 </DropdownMenuContent>
-
             </DropdownMenu>
-            </> 
-    ):(
-        <>
-            <Link href="/sign-up">
-            <Button className="bg-white text-primary hover:bg-gray-100 px-5 py-2 rounded-md font-semibold">
-                Sign-Up
-            </Button>
-            </Link>
+            </>
+        ) : (
+            <>
             <Link href="/sign-in">
-            <Button className="bg-transparent border border-white text-white hover:bg-white hover:text-primary px-5 py-2 rounded-md font-semibold">
+                <Button
+                variant="ghost"
+                className="text-gray-700 hover:text-black"
+                >
                 Log In
-            </Button>
+                </Button>
             </Link>
-            
-        
+            <Link href="/sign-up">
+                <Button className="bg-primary hover:bg-primary/90">
+                Start for free
+                </Button>
+            </Link>
             </>
         )}
         </div>
-
-        </div>
-        </nav>
-    );
+    </div>
+    </nav>
+);
 }
