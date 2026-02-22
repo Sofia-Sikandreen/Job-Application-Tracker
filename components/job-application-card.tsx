@@ -1,15 +1,15 @@
 "use client";
 
 import { JobApplication, Column } from "@/lib/models/models.types";
-import { Card, CardContent } from "./card";
+import { Card, CardContent } from "./ui/card";
 import { Edit2, ExternalLink, MoreVertical, Plus, Trash2 } from "lucide-react";
-import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuTrigger,} from "./dropdown-menu";
-import { Button } from "./button";
+import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuTrigger,} from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
 import {deleteJobApplication,updateJobApplication } from "@/lib/actions/job-applications";
 import {Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle,} from "@/components/ui/dialog";
-import { Label } from "./label";
-import { Input } from "./input";
-import { Textarea } from "./textarea";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 import React, { useState } from "react";
 interface JobApplicationCardProps {
 job: JobApplication;

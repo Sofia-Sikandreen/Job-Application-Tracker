@@ -2,11 +2,11 @@
 
 import { Board, Column, JobApplication } from "@/lib/models/models.types";
 import {Award,Calendar,CheckCircle2,Mic,MoreHorizontal,MoreVertical,Trash2,XCircle,} from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "./card";
-import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuTrigger} from "./dropdown-menu";
-import { Button } from "./button";
-import CreateJobApplicationDialog from "../create-job-dialogue";
-import JobApplicationCard from "../job-application-card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuTrigger} from "./ui/dropdown-menu";
+import { Button } from "./ui/button";
+import CreateJobApplicationDialog from "./create-job-dialogue";
+import JobApplicationCard from "./job-application-card";
 import { useBoard } from "@/lib/hooks/useBoards";
 import {closestCorners,DndContext,DragEndEvent,DragOverlay,DragStartEvent,PointerSensor,useDroppable,useSensor,useSensors,} from "@dnd-kit/core";
 import {SortableContext,useSortable,verticalListSortingStrategy,} from "@dnd-kit/sortable";
@@ -129,6 +129,7 @@ return (
 export default function KanbanBoard({ board, userId }: KanbanBoardProps) {
 const [activeId, setActiveId] = useState<string | null>(null);
 const { columns, moveJob } = useBoard(board);
+
 
 const sortedColumns = columns?.sort((a, b) => a.order - b.order) || [];
 

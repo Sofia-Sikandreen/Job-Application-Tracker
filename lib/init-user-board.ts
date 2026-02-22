@@ -37,7 +37,7 @@ try {
         name: col.name,
         order: col.order,
         boardId: board._id,
-        jobApplication: [],
+        jobApplications: [],
         })
     )
     );

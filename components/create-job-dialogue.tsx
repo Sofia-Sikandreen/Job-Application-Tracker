@@ -1,11 +1,11 @@
 "use client";
 
 import { Plus } from "lucide-react";
-import { Button } from "./button";
-import {Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle,DialogTrigger } from "./dialog";
-import { Label } from "./label";
-import { Input } from "./input";
-import { Textarea } from "./textarea";
+import { Button } from "./ui/button";
+import {Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle,DialogTrigger } from "./ui/dialog";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 import React, { useState } from "react";
 import { createJobApplication } from "@/lib/actions/job-applications";
 

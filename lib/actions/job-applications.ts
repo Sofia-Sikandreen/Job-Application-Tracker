@@ -1,9 +1,9 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getSession } from "../auth/auth";
-import connectDB from "../db";
-import { Board, Column, JobApplication } from "../models";
+import { getSession } from "@/lib/auth/auth";
+import connectDB from "@/lib/db";
+import { Board, Column, JobApplication } from "@/lib/models";
 
 interface JobApplicationData {
 company: string;

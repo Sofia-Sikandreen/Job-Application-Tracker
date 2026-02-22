@@ -2,21 +2,21 @@
 
 import { Briefcase } from "lucide-react";
 import Link from "next/link";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { getSession, signOut } from "@/lib/auth/auth";
-import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuTrigger } from "./dropdown-menu";
-import { Avatar, AvatarFallback } from "./avatar";
+import {DropdownMenu,DropdownMenuContent,DropdownMenuItem,DropdownMenuLabel,DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Avatar, AvatarFallback } from "./ui/avatar";
 import SignOutButton from "./signoutbutn";
 import { useSession } from "@/lib/auth/auth-client";
 
 export default function Navbar() {
 const { data: session } = useSession();
 return (
-    <nav className="border-b border-gray-200 bg-white">
+    <nav className="border-b border-gray-200 bg-primary">
     <div className="container mx-auto flex h-16 items-center px-4 justify-between">
         <Link
         href="/"
-        className="flex items-center gap-2 text-xl font-semibold text-primary"
+        className="flex items-center gap-2 text-xl font-semibold text-white"
         >
         <Briefcase />
         Job Tracker
@@ -27,19 +27,19 @@ return (
             <Link href="/dashboard">
                 <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-black"
+                className="text-white hover:text-primary font-semibold"
                 >
                 Dashboard
                 </Button>
             </Link>
             <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger asChild>
                 <Button
                     variant="ghost"
                     className="relative h-8 w-8 rounded-full"
                 >
                     <Avatar className="h-8 w-8">
-                    <AvatarFallback className="bg-primary text-white">
+                    <AvatarFallback className="bg-white text-primary">
                         {session.user.name[0].toUpperCase()}
                     </AvatarFallback>
                     </Avatar>
@@ -66,13 +66,13 @@ return (
             <Link href="/sign-in">
                 <Button
                 variant="ghost"
-                className="text-gray-700 hover:text-black"
+                className="text-white hover:text-primary"
                 >
                 Log In
                 </Button>
             </Link>
             <Link href="/sign-up">
-                <Button className="bg-primary hover:bg-primary/90">
+                <Button className="bg-white hover:bg-white/90 text-primary">
                 Start for free
                 </Button>
             </Link>

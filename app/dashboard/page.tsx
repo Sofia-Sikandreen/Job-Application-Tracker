@@ -2,7 +2,7 @@ import { getSession } from "@/lib/auth/auth";
 import connectDB from "@/lib/db";
 import { Board } from "@/lib/models";
 import { redirect } from "next/navigation";
-import KanbanBoard from "@/components/ui/kanban-board";
+import KanbanBoard from "@/components/kanban-board";
 import { Suspense } from "react";
 
 async function getBoard(userId: string) {
@@ -29,6 +29,7 @@ return board;
 
 
 async function DashboardPage() {
+    
     const session = await getSession();
 const board = await getBoard(session?.user.id ?? "");
 
@@ -36,7 +37,7 @@ if (!session?.user) {
     redirect("/sign-in");
 }
     return (
-        <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
+        <div className="min-h-screen bg-gradient-to-b from-[#bde5eb] to-[#d8eac7] ">
     <div className="container mx-auto px-6 py-10">
 
       {/* Header Section */}

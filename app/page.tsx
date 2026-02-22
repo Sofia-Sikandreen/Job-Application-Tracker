@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Layout, Calendar, BarChart2 } from 'lucide-react';
-import ImageTabs from "@/components/ui/image-tabs";
+import ImageTabs from "@/components/image-tabs";
 
 export default function Home() {
   return (
