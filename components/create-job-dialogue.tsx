@@ -71,9 +71,17 @@ return (
         </Button>
     </DialogTrigger>
 
-    <DialogContent className="max-w-2xl rounded-2xl bg-[#f8f6f2] shadow-xl border border-gray-200">
+    <DialogContent className=" w-[95vw] 
+    max-w-xl 
+    max-h-[90vh] 
+    overflow-y-auto
+    rounded-2xl 
+    bg-primary-hover
+    shadow-xl 
+    border border-gray-200
+    p-6">
         <DialogHeader>
-        <DialogTitle className="text-xl font-semibold text-gray-800">
+        <DialogTitle className="text-xl font-semibold text-primary">
             Add Job Application
         </DialogTitle>
         <DialogDescription className="text-gray-500">
@@ -85,9 +93,9 @@ return (
         <div className="space-y-6">
 
             {/* Company + Position */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-                <Label htmlFor="company" className="text-gray-700">
+                <Label htmlFor="company" className="text-primary">
                   Company *
                 </Label>
                 <Input
@@ -104,7 +112,7 @@ return (
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="position" className="text-gray-700">
+                <Label htmlFor="position" className="text-primary">
                   Position *
                 </Label>
                 <Input
@@ -124,7 +132,7 @@ return (
             {/* Location + Salary */}
             <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-                <Label htmlFor="location" className="text-gray-700">
+                <Label htmlFor="location" className="text-primary">
                 Location
                 </Label>
                 <Input
@@ -140,7 +148,7 @@ return (
             </div>
 
             <div className="space-y-2">
-                <Label htmlFor="salary" className="text-gray-700">
+                <Label htmlFor="salary" className="text-primary">
                 Salary
                 </Label>
                 <Input
@@ -159,7 +167,7 @@ return (
 
             {/* URL */}
             <div className="space-y-2">
-            <Label htmlFor="jobUrl" className="text-gray-700">
+            <Label htmlFor="jobUrl" className="text-primary">
                 Job URL
             </Label>
             <Input
@@ -178,7 +186,7 @@ return (
 
             {/* Tags */}
             <div className="space-y-2">
-            <Label htmlFor="tags" className="text-gray-700">
+            <Label htmlFor="tags" className="text-primary">
                 Tags (comma-separated)
             </Label>
             <Input
@@ -196,7 +204,7 @@ return (
 
             {/* Description */}
             <div className="space-y-2">
-            <Label htmlFor="description" className="text-gray-700">
+            <Label htmlFor="description" className="text-primary">
                 Description
             </Label>
             <Textarea
@@ -215,7 +223,7 @@ return (
 
             {/* Notes */}
             <div className="space-y-2">
-            <Label htmlFor="notes" className="text-gray-700">
+            <Label htmlFor="notes" className="text-primary">
                 Notes
             </Label>
             <Textarea
@@ -236,7 +244,7 @@ return (
             <Button
             type="button"
             variant="outline"
-            className="rounded-xl"
+            className="rounded-xl bg-white text-primary"
             onClick={() => setOpen(false)}
             >
             Cancel
@@ -244,7 +252,7 @@ return (
 
             <Button
             type="submit"
-            className="rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition"
+            className="rounded-xl bg-primary hover:bg-grey text-white transition"
             >
             Add Application
             </Button>
