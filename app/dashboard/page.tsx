@@ -54,7 +54,7 @@ if (!session?.user) {
         {/* Stats Card */}
         <div className="bg-white shadow-md rounded-2xl px-6 py-4 border">
         <p className="text-sm text-muted-foreground">Total Applications</p>
-        <p className="text-2xl font-semibold text-primary">
+        <p className="text-2xl font-semibold text-primary ">
             {board?.columns?.reduce(
             (acc: number, col: any) => acc + col.jobApplications.length,
             0
@@ -64,9 +64,13 @@ if (!session?.user) {
     </div>
 
       {/* Board Container */}
-    <div className="bg-white rounded-2xl shadow-lg border p-6 transition-all duration-300 hover:shadow-xl">
+    
+    <div className="bg-white rounded-2xl shadow-lg border p-6 overflow-x-auto min-h-screen container mx-auto ">
+        <div className="mb-6">
+        </div>
         <KanbanBoard board={board} userId={session.user.id} />
     </div>
+    
 
     </div>
 </div>

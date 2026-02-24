@@ -23,6 +23,7 @@ columns,
 dragHandleProps,
 }: JobApplicationCardProps) {
 const [isEditing, setIsEditing] = useState(false);
+const [expanded, setExpanded] = useState(false);
 const [formData, setFormData] = useState({
     company: job.company,
     position: job.position,
@@ -87,27 +88,42 @@ return (
     transition-all
     duration-200
     border border-border
-    group"
+    group w-64"
         {...dragHandleProps}
     >
         <CardContent className="p-4">
-        <div className="flex items-start justify-between gap-2">
-            <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-sm mb-1 text-foreground">{job.position}</h3>
-            <p className="text-xs text-text-muted mb-2">
+        <div className="flex items-start justify-between gap-2 ">
+            <div className="flex-1 min-w-0 ">
+            <h3 className="font-semibold text-sm mb-1 text-foreground truncate w-48">{job.position}</h3>
+            <p className="text-xs text-text-muted mb-2 truncate w-36">
                 {job.company}
             </p>
             {job.description && (
-                <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
-                {job.description}
-                </p>
+    <div className=" max-w-s">
+        <p
+        className="text-gray-700 overflow-hidden transition-all duration-300"
+        style={{
+          maxHeight: expanded ? "1000px" : "4.5rem", // approx 3 lines
+          whiteSpace: "pre-wrap", // paragraph wrap
+        }}
+        >
+        {job.description}
+        </p>
+
+        <button
+        onClick={() => setExpanded(!expanded)}
+        className="text-blue-500 hover:underline text-sm mt-1"
+        >
+        {expanded ? "Show Less" : "Read More"}
+        </button>
+    </div>
             )}
-            {job.tags && job.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1 mb-2">
+            {job.tags && job.tags.length > 0 &&  (
+                <div className="flex flex-wrap gap-2 mt-2">
                 {job.tags.map((tag, index) => (
                     <span
                     key={index}
-                    className="px-2 py-0.5text-xs rounded-full bg-accent-sky text-foreground border border-border">
+                    className="px-2 py-1 text-xs rounded-full bg-primary-hover text-foreground max-w-[120px] truncate">
                     {tag}
                     </span>
                 ))}
@@ -117,7 +133,7 @@ return (
                 <a
                 href={job.jobUrl}
                 target="_blank"
-                className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary-hover transition-colors mt-1"
+                className="inline-flex items-center gap-1 text-xs text-primary hover:text-primary-hover transition-colors mt-1 "
                 onClick={(e) => e.stopPropagation()}
                 >
                 <ExternalLink className="h-3 w-3" />
@@ -165,7 +181,15 @@ return (
     </Card>
 
     <Dialog open={isEditing} onOpenChange={setIsEditing}>
-        <DialogContent className="max-w-2xl bg-card text-card-foreground rounded-3xl shadow-lg border border-border">
+        <DialogContent className="w-[95vw] 
+    max-w-xl 
+    max-h-[90vh] 
+    overflow-y-auto
+    rounded-2xl 
+    bg-primary-hover
+    shadow-xl 
+    border border-gray-200
+    p-6">
         <DialogHeader>
             <DialogTitle className="text-xl font-semibold text-primary">Add Job Application</DialogTitle>
             <DialogDescription>Track a new job application</DialogDescription>
